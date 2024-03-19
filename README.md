@@ -29,6 +29,7 @@ N/A
 Please do not contribute to this repository. You may fork this one and make your own.
 
 ## [Test](#test)
+
 node server.js
 npm run devStart
 
@@ -44,9 +45,7 @@ For additional questions, you can reach me through:
 - Email: kurstiedehaven@gmail.com
 
 ## Video Demonstration
+
 -https://drive.google.com/file/d/1hRVFywVcJd9kwdRWW5_k1c9lYqfNzLSX/view
-
-
-## (One of these should work lol)
 
 You can reach me via email or on LinkedIn.
