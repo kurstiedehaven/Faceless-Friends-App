@@ -15,7 +15,11 @@ const reactionSchema = new mongoose.Schema(
       type: String,
       required: true,
       maxlength: 280,
-    }
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     toJSON: {

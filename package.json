@@ -1,11 +1,11 @@
 {
-  "name": "homework18-snapi",
+  "name": "faceless-friends-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "devStart": "nodemon server.js"
   },
   "keywords": [
     "mongodb"

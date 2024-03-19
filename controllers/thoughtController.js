@@ -1,17 +1,17 @@
-const { User, Thought } = require('../models');
+const { User, Thought } = require("../models");
 
 module.exports = {
-    getThoughts: async (req, res) => {
-        try {
-            const thoughts = await Thought.find();
-            res.status(200).json(thoughts);
-        } catch (err) {
-            console.error(err);
-            res.status(500).json(err);
-        }
-    },
-    // P!!!
-    getSingleThought: async (req, res) => {
+  // GET THOUGHTS
+  getThoughts: async (req, res) => {
+    try {
+      const thoughts = await Thought.find();
+      res.status(200).json(thoughts);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  // GET THOUGHT BY ID
+  getSingleThought: async (req, res) => {
     try {
       const thought = await Thought.findOne({
         _id: req.params.thoughtId,
@@ -33,6 +33,7 @@ module.exports = {
   // CREATE NEW THOUGHT
   createThought: async (req, res) => {
     try {
+      // Thoughts do not have to be unique, so $push instead of $addToSet
       const thought = await Thought.create(req.body);
       const user = await User.findOneAndUpdate(
         { _id: req.body.userId },
@@ -41,7 +42,9 @@ module.exports = {
       );
 
       if (!user) {
-        return res.status(404).json({ message: "Thought was created. But no User was found with that id."});
+        return res.status(404).json({
+          message: "Thought was created. But no User was found with that id.",
+        });
       }
 
       res.status(201).json(thought);
@@ -59,7 +62,9 @@ module.exports = {
       );
 
       if (!thought) {
-        return res.status(404).json({ message: "No thought was found with that id." });
+        return res
+          .status(404)
+          .json({ message: "No thought was found with that id." });
       }
 
       res.status(200).json(thought);
@@ -73,7 +78,9 @@ module.exports = {
       const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
 
       if (!thought) {
-        return res.status(404).json({ message: "No thought was found with that id." });
+        return res
+          .status(404)
+          .json({ message: "No thought was found with that id." });
       }
 
       res.status(200).json({ message: "Thought successfully deleted!" });
@@ -91,7 +98,9 @@ module.exports = {
       );
 
       if (!thought) {
-        return res.status(404).json({ message: "No thought was found with that id." });
+        return res
+          .status(404)
+          .json({ message: "No thought was found with that id." });
       }
 
       res.status(200).json(thought);
@@ -109,7 +118,9 @@ module.exports = {
       );
 
       if (!thought) {
-        return res.status(404).json({ message: "No thought was found with that id." });
+        return res
+          .status(404)
+          .json({ message: "No thought was found with that id." });
       }
 
       res.status(200).json(thought);
